@@ -41,7 +41,13 @@ model.add(MaxPooling2D(
 ))
 
 # Conv layer 2 output shape (64, 14, 14)
-model.add(Convolution2D(64, 5, 5, padding='same'))
+model.add(Convolution2D(
+    filters=64,
+    kernel_size=5,
+    strudes=(5, 5),
+    padding='same'
+))
+
 model.add(Activation('relu'))
 
 # Pooling layer 2 (max pooling) output shape (64, 7, 7)
