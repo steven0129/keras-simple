@@ -1,13 +1,12 @@
 import os
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
-import numpy as np
-np.random.seed(1337)  # for reproducibility
+import keras
 from keras.datasets import mnist
-from keras.utils import np_utils
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten
-from keras.optimizers import Adam
+from keras.layers import Dense, Dropout, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+from keras import backend as K
 
 batch_size = 128
 num_classes = 10
