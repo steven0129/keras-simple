@@ -44,7 +44,7 @@ model.add(MaxPooling2D(
 model.add(Convolution2D(
     filters=64,
     kernel_size=5,
-    strudes=(5, 5),
+    strides=(5, 5),
     padding='same'
 ))
 
