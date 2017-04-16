@@ -37,7 +37,7 @@ model.compile(optimizer=rmsprop, loss='categorical_crossentropy',
 
 print('Training ------------')
 # Another way to train the model
-model.fit(X_train, y_train, epochs=2, batch_size=32)
+model.fit(X_train, y_train, epochs=10, batch_size=32)
 
 print('\nTesting ------------')
 # Evaluate the model with the metrics we defined earlier
