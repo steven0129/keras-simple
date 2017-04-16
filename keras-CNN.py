@@ -25,6 +25,7 @@ model = Sequential()
 # Conv layer 1 output shape (32, 28, 28)
 model.add(Convolution2D(
     filters=32,
+    kernel_size=5,
     padding='same',
     strides=(5, 5),
     input_shape=(1, 28, 28)
