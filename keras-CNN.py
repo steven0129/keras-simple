@@ -24,10 +24,9 @@ model = Sequential()
 
 # Conv layer 1 output shape (32, 28, 28)
 model.add(Convolution2D(
-    nb_filter=32,
-    nb_row=5,
-    nb_col=5,
-    border_mode='same',
+    filters=32,
+    padding='same',
+    kernel_size=5,
     input_shape=(1, 28, 28)
 ))
 
@@ -37,19 +36,19 @@ model.add(Activation('relu'))
 model.add(MaxPooling2D(
     pool_size=(2, 2),
     strides=(2, 2),
-    border_mode='same' #padding method
+    padding='same'  # padding method
 ))
 
 # Conv layer 2 output shape (64, 14, 14)
-model.add(Convolution2D(64, 5, 5, border_mode='same'))
+model.add(Convolution2D(64, 5, 5, padding='same'))
 model.add(Activation('relu'))
 
 # Pooling layer 2 (max pooling) output shape (64, 7, 7)
-model.add(MaxPooling2D(pool_size=(2, 2), border_mode='same'))
+model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
 
 # Fully connected layer 1 input shape (64 * 7 * 7) = (3136), output shape
 # (1024)
-model.add(Flatten()) # 平坦化
+model.add(Flatten())  # 平坦化
 model.add(Dense(1024))
 model.add(Activation('relu'))
 
