@@ -35,7 +35,6 @@ model.add(Activation('relu'))
 # Pooling layer 1 (max pooling) output shape (32, 14, 14)
 model.add(MaxPooling2D(
     pool_size=(2, 2),
-    strides=(2, 2),
     padding='same'  # padding method
 ))
 
