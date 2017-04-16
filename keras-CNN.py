@@ -26,7 +26,7 @@ model = Sequential()
 model.add(Convolution2D(
     filters=32,
     padding='same',
-    kernel_size=(5, 5),
+    kernel_size=5,
     input_shape=(1, 28, 28)
 ))
 
@@ -35,6 +35,7 @@ model.add(Activation('relu'))
 # Pooling layer 1 (max pooling) output shape (32, 14, 14)
 model.add(MaxPooling2D(
     pool_size=(2, 2),
+    strides=(2, 2),
     padding='same'  # padding method
 ))
 
