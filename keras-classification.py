@@ -26,6 +26,7 @@ model = Sequential([
     Dense(32, input_dim=784),
     Activation('relu'),
     Dense(10),
+    Dense(10),
     Activation('softmax')])
 
 # Another way to define your optimizer
