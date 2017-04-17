@@ -2,8 +2,7 @@ import os
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
 import numpy as np
-np.random.seed(1337)  # for reproducibility
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import LSTM, TimeDistributed, Dense
 from keras.optimizers import Adam
