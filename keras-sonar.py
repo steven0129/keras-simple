@@ -7,9 +7,8 @@ import numpy as np
 import pandas
 from urllib.request import urlopen
 from keras.models import Sequential
-from keras.layers import SimpleRNN, Activation, Dense
+from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasClassifier
-from keras.optimizers import Adam
 from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import StratifiedKFold
@@ -42,24 +41,11 @@ encodedY = encoder.transform(Y)
 
 # Define function to build keras model
 def create_baseline():
-    # build RNN model
     model = Sequential()
-
-    # RNN cell
-    model.add(SimpleRNN(
-        batch_input_shape=(None, 60, 60),
-        units=50
-    ))
-
-    # output layer
-    model.add(Dense(1))
-    model.add(Activation('softmax'))
-
-    # optimizer
-    adam = Adam(0.001)
-    model.compile(optimizer=adam,
-                loss='categorical_crossentropy',
-                metrics=['accuracy'])
+    model.add(Dense(60, input_dim=60, init='normal', activation='relu'))
+    model.add(Dense(1, init='normal', activation='sigmoid'))
+    # compile the model
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
 
 # create the model using the KerasClassifier function
