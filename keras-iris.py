@@ -43,7 +43,7 @@ def baseline_model():
     # 4 inputs --> [4 hidden nodes] --> 3 outputs
 	model = Sequential()
 	model.add(Dense(4, input_dim=4, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(3, kernel_initializer='normal', activation='softmax'))
+	model.add(Dense(3, kernel_initializer='normal', activation='sigmoid'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	return model
