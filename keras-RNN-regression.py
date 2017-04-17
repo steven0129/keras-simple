@@ -2,7 +2,7 @@ import os
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import LSTM, TimeDistributed, Dense
 from keras.optimizers import Adam
@@ -48,10 +48,10 @@ for step in range(501):
     X_batch, Y_batch, xs = get_batch()
     cost = model.train_on_batch(X_batch, Y_batch)
     pred = model.predict(X_batch, BATCH_SIZE)
-    # plt.plot(xs[0, :], Y_batch[0].flatten(), 'r',
-    #          xs[0, :], pred.flatten()[:TIME_STEPS], 'b--')
-    # plt.ylim((-1.2, 1.2))
-    # plt.draw()
-    # plt.pause(0.1)
+    plt.plot(xs[0, :], Y_batch[0].flatten(), 'r',
+             xs[0, :], pred.flatten()[:TIME_STEPS], 'b--')
+    plt.ylim((-1.2, 1.2))
+    plt.draw()
+    plt.pause(0.1)
     if step % 10 == 0:
         print('train cost: ', cost)
