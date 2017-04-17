@@ -40,16 +40,22 @@ encoder.fit(Y)
 encodedY = encoder.transform(Y)
 
 # Define function to build keras model
+
+
 def create_baseline():
     model = Sequential()
-    model.add(Dense(60, input_dim=60, init='normal', activation='relu'))
-    model.add(Dense(1, init='normal', activation='sigmoid'))
+    model.add(Dense(60, input_dim=60,
+                    kernel_initializer='normal', activation='relu'))
+    model.add(Dense(1, kernel_initializer='normal', activation='sigmoid'))
     # compile the model
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy',
+                  optimizer='adam', metrics=['accuracy'])
     return model
 
+
 # create the model using the KerasClassifier function
-estimator = KerasClassifier(build_fn=create_baseline, epochs=100, batch_size=5, verbose=0)
+estimator = KerasClassifier(
+    build_fn=create_baseline, epochs=100, batch_size=5, verbose=0)
 kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=7)
 results = cross_val_score(estimator, X, Y, cv=kfold)
-print("Results: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
+print("Results: %.2f%% (%.2f%%)" % (results.mean() * 100, results.std() * 100))
